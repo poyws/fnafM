@@ -1,0 +1,403 @@
+<html><head><base href="https://www.fnafm.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FNAFM - Um Novo Terror Aguarda</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #ff0000;
+    --dark: #1a1a1a;
+    --light: #ffffff;
+    --accent: #720000;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+}
+
+.navbar {
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(255,0,0,0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+                url('office-background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ff4400' fill-opacity='0.1' d='M50 25c-3 0-5 2-5 5v10c0 3 2 5 5 5s5-2 5-5V30c0-3-2-5-5-5zM35 45c-2-2-6-2-8 0s-2 6 0 8l7 7c2 2 6 2 8 0s2-6 0-8l-7-7zM65 45l-7 7c-2 2-2 6 0 8s6 2 8 0l7-7c2-2 2-6 0-8s-6-2-8 0zM50 60c-8 0-15 7-15 15s7 15 15 15 15-7 15-15-7-15-15-15z'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    animation: floatPumpkins 30s linear infinite;
+}
+
+@keyframes floatPumpkins {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: glitch 3s infinite;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #ff0000;
+    animation: creepyText 3s infinite;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.cta-button {
+    padding: 0.7rem 1.5rem;
+    background: var(--primary);
+    color: var(--light) !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--primary);
+    background: var(--primary);
+    opacity: 0.9;
+}
+
+.features {
+    padding: 5rem 2rem;
+    background: var(--dark);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(0,0,0,0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, border 0.3s;
+    border: 2px solid var(--primary); /* Adding red border */
+    box-shadow: 0 0 10px rgba(255,0,0,0.1); /* Adding subtle red glow */
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent); /* Border changes to darker red on hover */
+    box-shadow: 0 0 20px rgba(255,0,0,0.2); /* Increased glow on hover */
+}
+
+.team {
+    padding: 5rem 2rem;
+    background: var(--accent);
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.discord-section {
+    padding: 5rem 2rem;
+    background: #5865F2;
+    text-align: center;
+}
+
+.discord-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.discord-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.discord-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.discord-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: #5865F2;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.discord-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.discord-icon {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 2px 2px var(--primary);
+    }
+    25% {
+        text-shadow: -2px -2px var(--primary);
+    }
+    50% {
+        text-shadow: 2px -2px var(--accent);
+    }
+    75% {
+        text-shadow: -2px 2px var(--accent);
+    }
+    100% {
+        text-shadow: 2px 2px var(--primary);
+    }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Add these new animations to the existing CSS */
+@keyframes creepyText {
+    0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+    50% { text-shadow: 0 0 15px #720000, 0 0 25px #720000; }
+    100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+}
+
+@keyframes shake {
+    0% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-10px, -10px) scale(1.1); }
+    50% { transform: translate(10px, 10px) scale(1); }
+    75% { transform: translate(-10px, 10px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.scary-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">FNAFM</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Características</a>
+            <a href="#team">Equipe</a>
+            <a href="#discord">Discord</a>
+            <a href="https://store.steampowered.com" class="cta-button">Jogar Agora</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="scary-animation" id="scaryAnimation"></div>
+        <div class="hero-content">
+            <h1>FNAFM</h1>
+            <p>Uma Nova Experiência de Terror Aguarda Você</p>
+            <a href="https://store.steampowered.com" class="cta-button">Download Agora</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Novos Animatrônicos</h3>
+                <p>Enfrente criaturas únicas e aterrorizantes em uma experiência completamente nova</p>
+            </div>
+            <div class="feature-card">
+                <h3>História Original</h3>
+                <p>Descubra os mistérios por trás do FNAFM em uma narrativa envolvente</p>
+            </div>
+            <div class="feature-card">
+                <h3>Mecânicas Inovadoras</h3>
+                <p>Sistemas de jogo reinventados para uma experiência ainda mais assustadora</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Nossa Equipe</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img alt="Buzzx - Creative Director, retrato estilizado em pixel art" src="buzzx.jpg" width="150" height="150">
+                <h3>Buzzx</h3>
+                <p>Creative Director</p>
+            </div>
+            <div class="team-member">
+                <img alt="Root - Technical Director, retrato estilizado em pixel art" src="https://cdn.discordapp.com/attachments/971604791824355328/1302291857547460811/root.jpg?ex=6727954e&is=672643ce&hm=826552bf5fbafa30332ba310909b5f0d722dc33cb5127aea4d9f0fda97626d2d&" width="150" height="150">
+                <h3>Root</h3>
+                <p>Technical Director</p>
+            </div>
+            <div class="team-member">
+                <img alt="Kauaga3 - Developer, retrato estilizado em pixel art" src="kauaga3.jpg" width="150" height="150">
+                <h3>Kauaga3</h3>
+                <p>Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="discord-section" id="discord">
+        <div class="discord-container">
+            <h2 class="discord-title">Junte-se à Nossa Comunidade</h2>
+            <p class="discord-description">Participe do nosso servidor Discord para conhecer outros jogadores, compartilhar suas experiências e ficar por dentro das novidades!</p>
+            <a href="https://discord.gg/RgYjutxhNu" class="discord-button" target="_blank">
+                <svg class="discord-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path fill="#5865F2" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
+                </svg>
+                Entrar no Discord
+            </a>
+        </div>
+    </section>
+
+<script>
+const scaryAnimation = document.getElementById('scaryAnimation');
+
+function createJumpscareEffect() {
+    const randomTime = Math.random() * 20000 + 10000; // Entre 10 e 30 segundos
+    setTimeout(() => {
+        const jumpscare = document.createElement('div');
+        jumpscare.style.position = 'fixed';
+        jumpscare.style.top = '50%';
+        jumpscare.style.left = '50%';
+        jumpscare.style.transform = 'translate(-50%, -50%)';
+        jumpscare.style.width = '100vw';
+        jumpscare.style.height = '100vh';
+        jumpscare.style.background = 'rgba(0,0,0,0.9)';
+        jumpscare.style.display = 'flex';
+        jumpscare.style.justifyContent = 'center';
+        jumpscare.style.alignItems = 'center';
+        jumpscare.style.zIndex = '1000';
+        jumpscare.style.animation = 'fadeInOut 0.5s forwards';
+
+        const face = document.createElement('img');
+        face.src = 'https://cdn.discordapp.com/attachments/971604791824355328/1302294533672927345/tW6hUPnHNlNVV7j032NjYKEfPq3LNpiHZNbPz1i2gPTHmjsgf8f8LOi6kLkGGYAAAAASUVORK5CYII.png?ex=672797cc&is=6726464c&hm=ff796328a45011293b70e9988d989d809143a05bcacd0188953e2601f19d6751&';
+        face.alt = 'Jumpscare face';
+        face.style.width = '400px';
+        face.style.height = 'auto';
+        face.style.animation = 'shake 0.1s infinite';
+
+        jumpscare.appendChild(face);
+        document.body.appendChild(jumpscare);
+
+        setTimeout(() => {
+            jumpscare.remove();
+            createJumpscareEffect();
+        }, 500);
+    }, randomTime);
+}
+
+createJumpscareEffect();
+
+// Adiciona efeito de glitch ao passar o mouse
+document.querySelector('.logo').addEventListener('mouseover', (e) => {
+    e.target.style.animation = 'glitch 0.3s infinite';
+});
+
+document.querySelector('.logo').addEventListener('mouseout', (e) => {
+    e.target.style.animation = 'none';
+});
+</script>
+
+</body>
+</html>
