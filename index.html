@@ -39,14 +39,15 @@ body {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.8rem; /* Reduced from 2.2rem */
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transition: all 0.3s ease;
-}
+    .logo {
+        font-size: 1.5rem; /* Reduced from 1.8rem */
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease;
+    }
+
 
 .nav-links {
     display: flex;
@@ -95,7 +96,10 @@ body {
     opacity: 0.9;
 }
 
-/* Update the hero section's cta-button for even larger size */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjust based on navbar height */
+}
 .hero .cta-button {
     padding: 1.2rem 3rem; /* Extra large padding for hero section button */
     font-size: 1.4rem; /* Larger font size for hero section button */
@@ -323,7 +327,7 @@ body {
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="logo">FNAFM</div>
         <div class="nav-links">
             <a href="#home">Home</a>
@@ -400,6 +404,23 @@ body {
     </section>
 
 <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            // Offset for fixed navbar
+            const offset = 80; // Adjust this value based on navbar height
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
 const scaryAnimation = document.getElementById('scaryAnimation');
 
 function createJumpscareEffect() {
