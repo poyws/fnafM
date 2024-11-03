@@ -39,15 +39,14 @@ body {
     align-items: center;
 }
 
-    .logo {
-        font-size: 1.5rem; /* Reduced from 1.8rem */
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        transition: all 0.3s ease;
-    }
-
+.logo {
+    font-size: 1.5rem; /* Reduced from 1.8rem */
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+}
 
 .nav-links {
     display: flex;
@@ -187,6 +186,68 @@ html {
     transform: translateY(-10px) scale(1.02);
     border-color: var(--primary);
     box-shadow: 0 10px 30px rgba(255,0,0,0.15);
+}
+
+.fnafm2 {
+    padding: 8rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+                url('office-background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.fnafm2-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fnafm2-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: glitch 3s infinite;
+    color: var(--primary);
+}
+
+.fnafm2-content p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    color: var(--light);
+}
+
+.game-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.game-info {
+    background: rgba(20,20,20,0.8);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,0,0,0.2);
+    max-width: 600px;
+}
+
+.game-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+}
+
+.game-info p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #cccccc;
+}
+
+.fnafm2 .cta-button {
+    font-size: 1.4rem;
+    padding: 1.2rem 3rem;
 }
 
 .team {
@@ -332,6 +393,7 @@ html {
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#features">Características</a>
+            <a href="#fnafm2">FNAFM 2</a>
             <a href="#team">Equipe</a>
             <a href="#discord">Discord</a>
             <a href="https://gamejolt.com/games/FNaM1/768038" class="cta-button">Jogar Agora</a>
@@ -360,6 +422,22 @@ html {
             <div class="feature-card">
                 <h3>Mecânicas Inovadoras</h3>
                 <p>Sistemas de jogo reinventados para uma experiência ainda mais assustadora</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="fnafm2" id="fnafm2">
+        <div class="fnafm2-container">
+            <div class="fnafm2-content">
+                <h2>FNAFM 2</h2>
+                <p>Continue a Saga do Terror</p>
+                <div class="game-preview">
+                    <div class="game-info">
+                        <h3>A História Continua</h3>
+                        <p>Prepare-se para mais uma noite de terror em FNAFM 2. Novos animatrônicos, novos desafios e muito mais sustos aguardam por você!</p>
+                        <a href="https://gamejolt.com/games/Fnam2game/935735" class="cta-button">Jogar FNAFM 2</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -486,6 +564,15 @@ const observer = new IntersectionObserver((entries) => {
 }, {
     threshold: 0.1
 });
+
+document.querySelectorAll('.feature-card, .team-member').forEach((el) => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
 
 document.querySelectorAll('.feature-card, .team-member').forEach((el) => {
     el.style.animationPlayState = 'paused';
